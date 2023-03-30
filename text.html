@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="getAccessToken()">토큰 가져오기</button>
+
+    <script>
+
+        async function getAccessToken(){
+
+            let clientId = '4d9cc4dc59da157546106846fec644f3';
+            let redirectUri = 'http:// 121.179.35.50:8081/tistoryCallback';
+            let url = 'https://www.tistory.com/oauth/authorize?';
+            url += `client_id=${clientId}`;
+            url += `&redirect_uri=${redirectUri}`;
+            url += `&response_type=code`;
+
+            let res = await fetch(url);
+            let data = await res.text();
+
+            console.log('Access Token:',data);
+        }
+
+    </script>
+
+</body>
+</html>
